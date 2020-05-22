@@ -29,6 +29,8 @@ func main() {
 		for y := 0; y < 10; y++ {
 			<-workerDoneChan
 		}
+		// close the workerDoneChan when all workers have returned
+		close(workerDoneChan)
 		// when all workers has exit close the result chan
 		close(resultChan)
 	}()
